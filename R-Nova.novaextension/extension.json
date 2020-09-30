@@ -1,9 +1,12 @@
 {
-    "identifier": "org.clayden.R-nova",
+    "identifier": "org.clayden.R-Nova",
     "name": "R-Nova",
     "organization": "Jon Clayden",
     "description": "An extension providing syntax definitions for the R language and R Markdown, and language server integration.",
     "version": "0.1",
+    "license": "BSD 3-clause",
+    "repository": "https://github.com/jonclayden/R-Nova",
+    "bugs": "https://github.com/jonclayden/R-Nova/issues",
     "categories": ["languages"],
     
     "main": "main.js",
@@ -15,10 +18,16 @@
     
     "config": [
         {
-            "key": "r.executable-path",
+            "key": "r-nova.executable-path",
             "title": "Path to R executable",
             "type": "path",
             "placeholder": "/usr/local/bin/R"
+        },
+        {
+            "key": "r-nova.enable-languageserver",
+            "title": "Enable language server (requires \"languageserver\" R package)",
+            "type": "boolean",
+            "default": false
         }
     ]
 }

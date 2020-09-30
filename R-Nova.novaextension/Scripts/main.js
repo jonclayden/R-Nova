@@ -17,13 +17,25 @@ exports.deactivate = function() {
 class RLanguageServer {
     constructor() {
         // Observe the configuration setting for the server's location, and restart the server on change
-        nova.config.observe('r.executable-path', function(path) {
-            this.start(path);
+        nova.config.observe('r-nova.executable-path', function(path) {
+            this.didChange();
+        }, this);
+        
+        nova.config.observe('r-nova.enable-languageserver', function(value) {
+            this.didChange();
         }, this);
     }
     
     deactivate() {
         this.stop();
+    }
+    
+    didChange() {
+        if (nova.config.get('r-nova.enable-languageserver', 'boolean')) {
+            this.start(nova.config.get('r-nova.executable-path', 'string'));
+        } else {
+            this.stop();
+        }
     }
     
     start(path) {
@@ -46,7 +58,7 @@ class RLanguageServer {
             // The set of document syntaxes for which the server is valid
             syntaxes: ['r']
         };
-        var client = new LanguageClient('r-langserver', 'R Language Server', serverOptions, clientOptions);
+        var client = new LanguageClient('r-languageserver', 'R Language Server', serverOptions, clientOptions);
         
         try {
             // Start the client
