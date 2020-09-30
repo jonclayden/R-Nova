@@ -1,0 +1,31 @@
+<syntax name="rmarkdown">
+    <meta>
+        <name>R Markdown</name>
+        <type>markup</type>
+        <preferred-file-extension>Rmd</preferred-file-extension>
+        <parent>markdown</parent>
+    </meta>
+    
+    <detectors>
+        <extension priority="1.0">Rmd,rmd</extension>
+    </detectors>
+    
+    <scopes>
+        <include syntax="self" collection="codeblocks" />
+        <include syntax="markdown" />
+    </scopes>
+    
+    <collections>
+        <collection name="codeblocks">
+            <scope name="rmarkdown.markup.block.code.r">
+                <starts-with>
+                    <expression>\`\`\`\{?(r|R)\b.+\}?</expression>
+                </starts-with>
+                <ends-with>
+                    <expression>\`\`\`</expression>
+                </ends-with>
+                <subsyntax name="r" />
+            </scope>
+        </collection>
+    </collections>
+</syntax>
