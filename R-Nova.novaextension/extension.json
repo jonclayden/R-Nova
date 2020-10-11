@@ -7,7 +7,7 @@
     "license": "BSD 3-clause",
     "repository": "https://github.com/jonclayden/R-Nova",
     "bugs": "https://github.com/jonclayden/R-Nova/issues",
-    "categories": ["languages"],
+    "categories": ["languages", "completions"],
     
     "main": "main.js",
     "activationEvents": ["onLanguage:r"],
