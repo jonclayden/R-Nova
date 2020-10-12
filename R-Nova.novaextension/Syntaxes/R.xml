@@ -48,11 +48,11 @@
     
     <collections>
         <collection name="all">
-            <include syntax="self" collection="keywords" />
-            <include syntax="self" collection="operators" />
-            <include syntax="self" collection="values" />
-            <include syntax="self" collection="strings" />
             <include syntax="self" collection="comments" />
+            <include syntax="self" collection="strings" />
+            <include syntax="self" collection="keywords" />
+            <include syntax="self" collection="values" />
+            <include syntax="self" collection="operators" />
             <include syntax="self" collection="blocks" />
             <include syntax="self" collection="types" />
             <include syntax="self" collection="misc" />
@@ -97,20 +97,20 @@
         <collection name="values">
             <scope name="r.value.null">
                 <strings>
-                    <string>NULL</string>
+                    <string>\bNULL\b</string>
                 </strings>
             </scope>
             
             <scope name="r.value.number">
-                <expression>((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(i|L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)</expression>
+                <expression>(?&lt;![\w.])((0(x|X)[0-9a-fA-F]*)|(-?\d+L?)|(-?\d*\.?\d+((e|E)(\+|-)?\d+)?i?))(?![\d.])</expression>
             </scope>
             
             <scope name="r.value.boolean">
-                <expression>TRUE|FALSE|T|F</expression>
+                <expression>\b(TRUE|FALSE|T|F)\b</expression>
             </scope>
             
             <scope name="r.value.misc">
-                <expression>NA|Inf|NaN|pi|letters|LETTERS|month\.abb|month\.name</expression>
+                <expression>\b(NA|Inf|NaN|pi|letters|LETTERS|month\.abb|month\.name)\b</expression>
             </scope>
         </collection>
         
@@ -147,7 +147,7 @@
         
         <collection name="types">
             <scope name="r.identifier.type.basic">
-                <expression>(?&lt;!\.)\b(logical|numeric|character|complex|matrix|array|data\.frame|list|factor)(?=\s*\()</expression>
+                <expression>(?&lt;![\w.])(logical|numeric|character|complex|matrix|array|data\.frame|list|factor)(?=\s*\()</expression>
             </scope>
         </collection>
         
@@ -165,12 +165,12 @@
             
             <scope name="r.arguments">
                 <starts-with>
-                    <expression>(\()</expression>
-                    <capture number="1" name="r.bracket" />
+                    <expression>\(</expression>
+                    <capture number="0" name="r.bracket" />
                 </starts-with>
                 <ends-with>
-                    <expression>(\))</expression>
-                    <capture number="1" name="r.bracket" />
+                    <expression>\)</expression>
+                    <capture number="0" name="r.bracket" />
                 </ends-with>
                 <subscopes>
                     <include syntax="self" collection="values" />
@@ -183,7 +183,7 @@
                     </scope>
                     <scope name="r.identifier.argument">
                         <symbol type="argument" />
-                        <expression>([\w.]+)(=(?=[^=]))</expression>
+                        <expression>([\w.]+)\s*(=)\s*(?=[^=])</expression>
                         <capture number="1" name="r.identifier.argument.name" />
                         <capture number="2" name="r.operator.assignment" />
                     </scope>
