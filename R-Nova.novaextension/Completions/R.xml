@@ -3,10 +3,26 @@
 <completions>
     <provider>
         <syntax>r</syntax>
-        <selector>*:not(comment)</selector>
+        <selector>*:not(comment,string)</selector>
         <expression>\b[\w.]+</expression>
+        <set>r.base.constants</set>
         <set>r.base.functions</set>
     </provider>
+    
+    <set name="r.base.constants" symbol="constant">
+        <completion string="TRUE" />
+        <completion string="FALSE" />
+        <completion string="NULL" />
+        <completion string="letters" />
+        <completion string="LETTERS" />
+        <completion string="month.name" />
+        <completion string="month.abb" />
+        <completion string="pi" />
+        <completion string="R.version" />
+        <completion string="R.version.string" />
+    </set>
+    
+    <!-- NB: Replacement functions aren't here, because behaviours can't yet delete the "<-" characters from the name as far as I know. -->
     
     <set name="r.base.functions" symbol="function">
         <behavior>
