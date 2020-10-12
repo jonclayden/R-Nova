@@ -13,6 +13,13 @@
         <completion string="TRUE" />
         <completion string="FALSE" />
         <completion string="NULL" />
+        <completion string="NA" />
+        <completion string="NA_integer_" />
+        <completion string="NA_real_" />
+        <completion string="NA_complex_" />
+        <completion string="NA_character_" />
+        <completion string="Inf" />
+        <completion string="NaN" />
         <completion string="letters" />
         <completion string="LETTERS" />
         <completion string="month.name" />
