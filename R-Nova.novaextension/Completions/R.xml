@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <completions>
-    <provider>
+    <provider name="r.static">
         <syntax>r</syntax>
         <selector>*:not(comment,string)</selector>
-        <expression>\b[\w.]+</expression>
+        <expression>(?&lt;![\w.])[\w.]+</expression>
         <set>r.base.constants</set>
         <set>r.base.functions</set>
+    </provider>
+    
+    <provider name="r.symbol">
+        <syntax>r</syntax>
+        <selector>*:not(comment,string)</selector>
+        <expression>(?&lt;![\w.])[\w.]+</expression>
+        <symbols type="function">
+            <behavior>
+                <append>($[])</append>
+            </behavior>
+        </symbols>
     </provider>
     
     <set name="r.base.constants" symbol="constant">
