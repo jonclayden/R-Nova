@@ -50,17 +50,18 @@
         <collection name="all">
             <include syntax="self" collection="comments" />
             <include syntax="self" collection="strings" />
+            <include syntax="self" collection="closures" />
             <include syntax="self" collection="keywords" />
             <include syntax="self" collection="values" />
             <include syntax="self" collection="operators" />
-            <include syntax="self" collection="blocks" />
-            <include syntax="self" collection="types" />
-            <include syntax="self" collection="misc" />
+            <include syntax="self" collection="calls" />
+            <include syntax="self" collection="definitions" />
+            <include syntax="self" collection="generic" />
         </collection>
         
         <collection name="keywords">
             <scope name="r.keyword">
-                <expression>\b(if|break|next|repeat|else|for|return|switch|while|in|function)\b</expression>
+                <expression>\b(if|break|next|repeat|else|for|return|while|in|function)\b</expression>
             </scope>
         </collection>
         
@@ -86,7 +87,7 @@
             </scope>
             
             <scope name="r.operator.other">
-                <expression>\.\.\.|\$|@|:|\~</expression>
+                <expression>\$|@|:|\~</expression>
             </scope>
             
             <scope name="r.operator.infix">
@@ -96,9 +97,7 @@
         
         <collection name="values">
             <scope name="r.value.null">
-                <strings>
-                    <string>\bNULL\b</string>
-                </strings>
+                <expression>\bNULL\b</expression>
             </scope>
             
             <scope name="r.value.number">
@@ -130,14 +129,18 @@
             </scope>
         </collection>
         
-        <collection name="blocks">
-            <scope name="r.block">
-                <context behavior="subtree" />
+        <collection name="closures">
+            <scope name="r.closure">
+                <symbol type="closure">
+                    <context behavior="subtree" group="closure" />
+                </symbol>
                 <starts-with>
                     <expression>\{</expression>
+                    <capture number="0" name="r.bracket.brace" />
                 </starts-with>
                 <ends-width>
                     <expression>\}</expression>
+                    <capture number="0" name="r.bracket.brace" />
                 </ends-width>
                 <subscopes>
                     <include syntax="self" collection="all" />
@@ -145,57 +148,84 @@
             </scope>
         </collection>
         
-        <collection name="types">
+        <collection name="calls">
             <scope name="r.identifier.type.basic">
                 <expression>(?&lt;![\w.])(logical|numeric|character|complex|matrix|array|data\.frame|list|factor)(?=\s*\()</expression>
             </scope>
-        </collection>
-        
-        <collection name="misc">
-            <scope name="r.call">
-                <expression>([\w.]+)(?=\s*\())</expression>
-                <capture number="1" name="r.identifier.function" />
-            </scope>
             
-            <scope name="r.namespaced-object">
-                <expression>([\w.]+)(::)(?=\w)</expression>
-                <capture number="1" name="r.identifier.namespace" />
-                <capture number="2" name="r.operator.namespace" />
+            <scope name="r.identifier.function">
+                <expression>(?&lt;![\w.])([\w.]+)(?=\s*\()</expression>
             </scope>
             
             <scope name="r.arguments">
                 <starts-with>
                     <expression>\(</expression>
-                    <capture number="0" name="r.bracket" />
+                    <capture number="0" name="r.bracket.round" />
                 </starts-with>
                 <ends-with>
                     <expression>\)</expression>
-                    <capture number="0" name="r.bracket" />
+                    <capture number="0" name="r.bracket.round" />
                 </ends-with>
                 <subscopes>
-                    <include syntax="self" collection="values" />
                     <include syntax="self" collection="strings" />
-                    <include syntax="self" collection="types" />
-                    <include syntax="self" collection="misc" />
+                    <include syntax="self" collection="values" />
+                    <include syntax="self" collection="closures" />
+                    <include syntax="self" collection="operators" />
+                    <include syntax="self" collection="calls" />
                     
                     <scope name="r.separator">
-                        <expression>\s*,\s*</expression>
+                        <expression>,</expression>
+                    </scope>
+                    <scope name="r.identifier.argument.ellipsis">
+                        <symbol type="argument" />
+                        <expression>(?&lt;![\w.])(\.{3})(?![\w.])</expression>
+                        <capture number="1" name="r.identifier.argument.name" />
                     </scope>
                     <scope name="r.identifier.argument">
                         <symbol type="argument" />
-                        <expression>([\w.]+)\s*(=)\s*(?=[^=])</expression>
+                        <expression>(?&lt;=[\(,]\s*)([\w.]+)</expression>
                         <capture number="1" name="r.identifier.argument.name" />
-                        <capture number="2" name="r.operator.assignment" />
                     </scope>
                 </subscopes>
             </scope>
-            
+        </collection>
+        
+        <collection name="definitions">
             <scope name="r.definition.function">
-                <symbol type="function" />
+                <symbol type="function">
+                    <context behavior="subtree" group="function" />
+                </symbol>
                 <expression>([\w.]+)\s*(&lt;-|=)\s*(function)</expression>
                 <capture number="1" name="r.identifier.function.name" />
                 <capture number="2" name="r.operator.assignment" />
                 <capture number="3" name="r.keyword" />
+            </scope>
+            
+            <scope name="r.definition.variable.left">
+                <symbol type="variable" />
+                <expression>([\w.]+)\s*(&lt;&lt;?-|=)(?!\s*function)</expression>
+                <capture number="1" name="r.identifier.variable.name" />
+                <capture number="2" name="r.operator.assignment" />
+            </scope>
+            
+            <scope name="r.definition.variable.right">
+                <symbol type="variable" />
+                <expression>(-&gt;&gt;?)\s*([\w.]+)</expression>
+                <capture number="1" name="r.operator.assignment" />
+                <capture number="2" name="r.identifier.variable.name" />
+            </scope>
+        </collection>
+        
+        <collection name="generic">
+            <scope name="r.namespace">
+                <expression>([\w.]+)(:::?)(?=[\w.])</expression>
+                <capture number="1" name="r.identifier.namespace" />
+                <capture number="2" name="r.operator.namespace" />
+            </scope>
+            
+            <scope name="r.object">
+                <expression>(\.[A-Za-z_]?|[A-Za-z])[\w.]*</expression>
+                <capture number="0" name="r.identifier.object.name" />
             </scope>
         </collection>
     </collections>
