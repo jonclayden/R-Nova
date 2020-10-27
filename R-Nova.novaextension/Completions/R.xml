@@ -4,7 +4,7 @@
     <provider name="r.static">
         <syntax>r</syntax>
         <selector>*:not(comment,string)</selector>
-        <expression>(?&lt;![\w.])[\w.]+</expression>
+        <expression>(?&lt;![\w.])(\.[A-Za-z_]|[A-Za-z][\w.])</expression>
         <set>r.base.constants</set>
         <set>r.base.functions</set>
     </provider>
@@ -12,12 +12,13 @@
     <provider name="r.symbol">
         <syntax>r</syntax>
         <selector>*:not(comment,string)</selector>
-        <expression>(?&lt;![\w.])[\w.]+</expression>
+        <expression>(?&lt;![\w.])(\.[A-Za-z_]|[A-Za-z][\w.])</expression>
         <symbols type="function">
             <behavior>
                 <append>($[])</append>
             </behavior>
         </symbols>
+        <symbols type="variable" />
     </provider>
     
     <set name="r.base.constants" symbol="constant">
