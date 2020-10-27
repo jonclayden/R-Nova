@@ -101,7 +101,7 @@
             </scope>
             
             <scope name="r.value.number">
-                <expression>(?&lt;![\w.])((0(x|X)[0-9a-fA-F]*)|(-?\d+L?)|(-?\d*\.?\d+((e|E)(\+|-)?\d+)?i?))(?![\d.])</expression>
+                <expression>(?&lt;![\w.])((0(x|X)[0-9a-fA-F]*)|(-?\d+L?)|(-?\d*\.?\d+((e|E)(\+|-)?\d+)?i?))(?![\d.eE])</expression>
             </scope>
             
             <scope name="r.value.boolean">
