@@ -50,7 +50,7 @@
         <collection name="all">
             <include syntax="self" collection="comments" />
             <include syntax="self" collection="strings" />
-            <include syntax="self" collection="closures" />
+            <include syntax="self" collection="blocks" />
             <include syntax="self" collection="keywords" />
             <include syntax="self" collection="values" />
             <include syntax="self" collection="operators" />
@@ -129,22 +129,21 @@
             </scope>
         </collection>
         
-        <collection name="closures">
-            <scope name="r.closure">
-                <symbol type="closure">
-                    <context behavior="subtree" group="closure" />
+        <collection name="blocks">
+            <scope name="r.block.start">
+                <symbol type="block">
+                    <context behavior="start" group="block" />
                 </symbol>
-                <starts-with>
-                    <expression>\{</expression>
-                    <capture number="0" name="r.bracket.brace" />
-                </starts-with>
-                <ends-width>
-                    <expression>\}</expression>
-                    <capture number="0" name="r.bracket.brace" />
-                </ends-width>
-                <subscopes>
-                    <include syntax="self" collection="all" />
-                </subscopes>
+                <expression>\{</expression>
+                <capture number="0" name="r.bracket.brace" />
+            </scope>
+            
+            <scope name="r.block.end">
+                <symbol type="block">
+                    <context behavior="end" group="block" />
+                </symbol>
+                <expression>\}</expression>
+                <capture number="0" name="r.bracket.brace" />
             </scope>
         </collection>
         
@@ -168,8 +167,9 @@
                 </ends-with>
                 <subscopes>
                     <include syntax="self" collection="strings" />
+                    <include syntax="self" collection="keywords" />
                     <include syntax="self" collection="values" />
-                    <include syntax="self" collection="closures" />
+                    <include syntax="self" collection="blocks" />
                     <include syntax="self" collection="operators" />
                     <include syntax="self" collection="calls" />
                     
