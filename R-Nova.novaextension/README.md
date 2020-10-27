@@ -1,10 +1,11 @@
 # R-Nova
 
-R-Nova provides interoperability between Nova and R. For this initial release, this includes
+R-Nova provides R support for Nova. The following features are currently included.
 
-- syntax definitions for R and R Markdown, to allow highlighting of these files in Nova; and
-- an interface to the [`languageserver` R package](https://cran.r-project.org/package=languageserver) to provide linting and completions for R code.
+- Syntax definitions for R and R Markdown, to allow highlighting of these files in Nova. Functions and variables in user code are also symbolicated for ease of navigation.
+- Code completion for R, including both standard symbols (from the `base` package) and dynamically parsed function and variable names from the current project.
+- An interface to the [`languageserver` R package](https://cran.r-project.org/package=languageserver) to provide linting and other language server features for R code.
 
-Further functionality will be added in future.
+Further functionality is being added gradually for deeper integration. If you would like to support development of the extension, code contributions ([via GitHub](https://github.com/jonclayden/R-Nova)) and tips ([via PayPal](https://paypal.me/jonclayden)) are both welcome.
 
 The [R logo](https://www.r-project.org/logo/), used as the extension icon, is © 2016 The R Foundation. It is redistributed under the terms of the [Creative Commons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/) (CC-BY-SA 4.0).
