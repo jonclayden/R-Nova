@@ -183,7 +183,7 @@
                     </scope>
                     <scope name="r.identifier.argument">
                         <symbol type="argument" />
-                        <expression>(?&lt;=[\(,]\s*)([\w.]+)</expression>
+                        <expression>([\w.]+)(?=\s*=)</expression>
                         <capture number="1" name="r.identifier.argument.name" />
                     </scope>
                 </subscopes>
