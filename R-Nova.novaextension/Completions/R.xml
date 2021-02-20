@@ -19,6 +19,7 @@
             </behavior>
         </symbols>
         <symbols type="variable" />
+        <symbols type="argument" />
     </provider>
     
     <set name="r.base.constants" symbol="constant">
