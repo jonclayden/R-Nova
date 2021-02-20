@@ -115,11 +115,21 @@
         
         <collection name="strings">
             <scope name="r.string.single-quoted">
-                <expression>&apos;((?&lt;=\\)&apos;|[^&apos;])*&apos;</expression>
+                <starts-with>
+                    <expression>&apos;</expression>
+                </starts-with>
+                <ends-with>
+                    <expression>(?&lt;!\\)&apos;</expression>
+                </ends-with>
             </scope>
             
             <scope name="r.string.double-quoted">
-                <expression>&quot;((?&lt;=\\)&quot;|[^&quot;])*&quot;</expression>
+                <starts-with>
+                    <expression>&quot;</expression>
+                </starts-with>
+                <ends-with>
+                    <expression>(?&lt;!\\)&quot;</expression>
+                </ends-with>
             </scope>
         </collection>
         
