@@ -130,20 +130,21 @@
         </collection>
         
         <collection name="blocks">
-            <scope name="r.block.start">
+            <scope name="r.block">
                 <symbol type="block">
-                    <context behavior="start" group="block" />
+                    <context behavior="subtree" group="block" />
                 </symbol>
-                <expression>\{</expression>
-                <capture number="0" name="r.bracket.brace" />
-            </scope>
-            
-            <scope name="r.block.end">
-                <symbol type="block">
-                    <context behavior="end" group="block" />
-                </symbol>
-                <expression>\}</expression>
-                <capture number="0" name="r.bracket.brace" />
+                <starts-with>
+                    <expression>\{</expression>
+                    <capture number="0" name="r.bracket.brace" />
+                </starts-with>
+                <ends-with>
+                    <expression>\}</expression>
+                    <capture number="0" name="r.bracket.brace" />
+                </ends-with>
+                <subscopes>
+                    <include syntax="self" collection="all" />
+                </subscopes>
             </scope>
         </collection>
         
