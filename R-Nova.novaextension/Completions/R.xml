@@ -5,6 +5,7 @@
         <syntax>r</syntax>
         <selector>*:not(comment,string)</selector>
         <expression>(?&lt;![\w.])(\.[A-Za-z_]|[A-Za-z][\w.])[\w.]*</expression>
+        <set>r.keywords</set>
         <set>r.base.constants</set>
         <set>r.base.functions</set>
     </provider>
@@ -21,6 +22,19 @@
         <symbols type="variable" />
         <symbols type="argument" />
     </provider>
+    
+    <set name="r.keywords" symbol="keyword">
+        <completion string="if" />
+        <completion string="break" />
+        <completion string="next" />
+        <completion string="repeat" />
+        <completion string="else" />
+        <completion string="for" />
+        <completion string="return" />
+        <completion string="while" />
+        <completion string="in" />
+        <completion string="function" />
+    </set>
     
     <set name="r.base.constants" symbol="constant">
         <completion string="TRUE" />
@@ -143,7 +157,6 @@
         <completion string="bitwXor" />
         <completion string="body" />
         <completion string="bquote" />
-        <completion string="break" />
         <completion string="browser" />
         <completion string="browserCondition" />
         <completion string="browserSetDebug" />
@@ -286,7 +299,6 @@
         <completion string="findRestart" />
         <completion string="floor" />
         <completion string="flush" />
-        <completion string="for" />
         <completion string="force" />
         <completion string="forceAndCall" />
         <completion string="formals" />
@@ -296,7 +308,6 @@
         <completion string="formatC" />
         <completion string="formatDL" />
         <completion string="forwardsolve" />
-        <completion string="function" />
         <completion string="gamma" />
         <completion string="gc" />
         <completion string="gc.time" />
@@ -348,7 +359,6 @@
         <completion string="icuSetCollate" />
         <completion string="identical" />
         <completion string="identity" />
-        <completion string="if" />
         <completion string="ifelse" />
         <completion string="Im" />
         <completion string="importIntoEnv" />
@@ -506,7 +516,6 @@
         <completion string="NCOL" />
         <completion string="Negate" />
         <completion string="new.env" />
-        <completion string="next" />
         <completion string="NextMethod" />
         <completion string="ngettext" />
         <completion string="nlevels" />
@@ -615,7 +624,6 @@
         <completion string="rep" />
         <completion string="rep_len" />
         <completion string="rep.int" />
-        <completion string="repeat" />
         <completion string="replace" />
         <completion string="replicate" />
         <completion string="require" />
@@ -623,7 +631,6 @@
         <completion string="restartDescription" />
         <completion string="restartFormals" />
         <completion string="retracemem" />
-        <completion string="return" />
         <completion string="returnValue" />
         <completion string="rev" />
         <completion string="rle" />
@@ -826,7 +833,6 @@
         <completion string="which" />
         <completion string="which.max" />
         <completion string="which.min" />
-        <completion string="while" />
         <completion string="with" />
         <completion string="withAutoprint" />
         <completion string="withCallingHandlers" />
