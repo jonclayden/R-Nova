@@ -1,8 +1,12 @@
 var langserver = null;
+var taskassistant = null;
 
 exports.activate = function() {
     // Do work when the extension is activated
+    console.log("Activating R-Nova extension for workspace at " + nova.workspace.path)
     langserver = new RLanguageServer();
+    taskassistant = new RTaskAssistant();
+    nova.assistants.registerTaskAssistant(taskassistant);
 }
 
 exports.deactivate = function() {
@@ -13,6 +17,29 @@ exports.deactivate = function() {
     }
 }
 
+class RTaskAssistant {
+    constructor() {
+        this.tasks = [];
+        
+        // The project looks like an R package
+        if (this.workspaceContains("DESCRIPTION") && this.workspaceContains("tests")) {
+            let testTask = new Task("Test Package");
+            testTask.setAction(Task.Run, new TaskProcessAction(nova.path.join(nova.extension.path,"Scripts","test.R"), {
+                env: { "WORKSPACE_PATH": "$WorkspaceFolder" },
+                matchers: [ "testthat-error" ]
+            }));
+            this.tasks.push(testTask);
+        }
+    }
+    
+    workspaceContains(subpath) {
+        return (nova.workspace.path && nova.workspace.contains(nova.path.join(nova.workspace.path, subpath)))
+    }
+    
+    provideTasks() {
+        return this.tasks;
+    }
+}
 
 class RLanguageServer {
     constructor() {
