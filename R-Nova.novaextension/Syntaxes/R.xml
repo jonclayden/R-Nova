@@ -66,6 +66,10 @@
         </collection>
         
         <collection name="operators">
+            <scope name="r.operator.pipe">
+                <expression>\|&gt;</expression>
+            </scope>
+            
             <scope name="r.operator.arithmetic">
                 <expression>\-|\+|\*|\/|%\/%|%%|%\*%|%in%|%o%|%x%|\^</expression>
             </scope>
