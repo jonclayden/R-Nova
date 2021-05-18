@@ -17,11 +17,15 @@ if (file.exists(file.path(path, "tests", "testthat"))) {
         devtools::test(path, stop_on_failure=TRUE)
     } else {
         cat(paste0("Testing package \"", name, "\" (via testthat)...\n"))
+        library(name, character.only=TRUE)
         testthat::test_dir(file.path(path, "tests", "testthat"), stop_on_failure=TRUE)
     }
 } else if (file.exists(file.path(path, "inst", "tinytest"))) {
     cat(paste0("Testing package \"", name, "\" (via tinytest)...\n"))
     library(name, character.only=TRUE)
     library(tinytest)
-    test_all(path)
+    results <- test_all(path)
+    print(results)
+    if (any_fail(results))
+        stop("Tests failed")
 }
