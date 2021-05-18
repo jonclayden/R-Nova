@@ -3,7 +3,7 @@
     "name": "R-Nova",
     "organization": "Jon Clayden",
     "description": "Support for the R language and R Markdown, including language server integration.",
-    "version": "0.2",
+    "version": "0.3",
     "min_runtime": "2",
     "license": "BSD 3-clause",
     "repository": "https://github.com/jonclayden/R-Nova",
