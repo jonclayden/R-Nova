@@ -26,7 +26,7 @@ class RTaskAssistant {
             let testTask = new Task("Test Package");
             testTask.setAction(Task.Run, new TaskProcessAction(nova.path.join(nova.extension.path,"Scripts","test.R"), {
                 env: { "WORKSPACE_PATH": "$WorkspaceFolder" },
-                matchers: [ "testthat-error" ]
+                matchers: [ "testthat-error", "tinytest-error" ]
             }));
             this.tasks.push(testTask);
         }

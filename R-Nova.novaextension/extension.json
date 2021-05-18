@@ -22,9 +22,11 @@
     "issueMatchers": {
         "tinytest-error": {
             "pattern": {
-                "regexp": "FAILED[^:]+: (.+?)\\<(\\d+)--(\\d+)\\>",
-                "file": 1,
-                "line": 2,
+                "regexp": "(FAILED)[^:]+: (.+?)<(\\d+)--(\\d+)>",
+                "message": 1,
+                "file": 2,
+                "line": 3,
+                "endLine": 4,
                 "severity": "error"
             }
         },
