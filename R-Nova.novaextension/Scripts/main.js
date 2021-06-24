@@ -1,39 +1,12 @@
 var langserver = null;
 var taskassistant = null;
 
-// Asynchronous helper function to check script file permissions
-// Courtesy Martin Kopischke
-exports.makeExecutable = async function(paths) {
-    const nonexec = []
-    const binpaths = [].concat(paths)
-    binpaths.forEach(path => {
-        if (!nova.fs.access(path, nova.fs.F_OK)) {
-            const msg = `Can’t locate extension binaries at path “${path}”.`
-            throw new Error(msg)
-        }
-        if (!nova.fs.access(path, nova.fs.X_OK)) nonexec.push(path)
-    })
-    
-    if (nonexec.length) {
-        const options = { args: ['+x'].concat(nonexec) }
-        const results = await runAsync('/bin/chmod', options)
-        if (results.code > 0) throw new Error(results.stderr)
-    }
-    return nonexec.length
-}
-
 exports.activate = function() {
     // Do work when the extension is activated
     console.log("Activating R-Nova extension for workspace at " + nova.workspace.path)
-    
-    try {
-        await exports.makeExecutable([nova.path.join(nova.extension.path,"Scripts","test.R")]);
-        langserver = new RLanguageServer();
-        taskassistant = new RTaskAssistant();
-        nova.assistants.registerTaskAssistant(taskassistant);
-    } catch (error) {
-        console.error(error)
-    }
+    langserver = new RLanguageServer();
+    taskassistant = new RTaskAssistant();
+    nova.assistants.registerTaskAssistant(taskassistant);
 }
 
 exports.deactivate = function() {
