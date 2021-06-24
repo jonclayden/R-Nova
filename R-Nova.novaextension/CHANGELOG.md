@@ -1,3 +1,7 @@
+## Version 0.3.1
+
+- The "Test Package" task could fail with an error about a missing script, due to a file permissions issue. A workaround has been added to resolve this.
+
 ## Version 0.3
 
 - If the workspace looks like an R package with tests (having a `DESCRIPTION` file and `tests` subdirectory), the extension now provides a prebuilt task for running the tests against the package. This is compatible with the `testthat` and `tinytest` unit testing frameworks.
