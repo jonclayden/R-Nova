@@ -24,7 +24,8 @@ class RTaskAssistant {
         // The project looks like an R package
         if (this.workspaceContains("DESCRIPTION") && this.workspaceContains("tests")) {
             let testTask = new Task("Test Package");
-            testTask.setAction(Task.Run, new TaskProcessAction(nova.path.join(nova.extension.path,"Scripts","test.R"), {
+            testTask.setAction(Task.Run, new TaskProcessAction("/usr/bin/env", {
+                args: [ "Rscript", nova.path.join(nova.extension.path, "Scripts", "test.R") ],
                 env: { "WORKSPACE_PATH": "$WorkspaceFolder" },
                 matchers: [ "testthat-error", "tinytest-error" ]
             }));
