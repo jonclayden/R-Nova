@@ -119,8 +119,13 @@
                     <expression>&apos;</expression>
                 </starts-with>
                 <ends-with>
-                    <expression>(?&lt;!\\)&apos;</expression>
+                    <expression>&apos;</expression>
                 </ends-with>
+                <subscopes>
+                    <scope name="r.string.single-quoted.escape">
+                        <expression>\\.</expression>
+                    </scope>
+                </subscopes>
             </scope>
             
             <scope name="r.string.double-quoted">
@@ -128,8 +133,13 @@
                     <expression>&quot;</expression>
                 </starts-with>
                 <ends-with>
-                    <expression>(?&lt;!\\)&quot;</expression>
+                    <expression>&quot;</expression>
                 </ends-with>
+                <subscopes>
+                    <scope name="r.string.double-quoted.escape">
+                        <expression>\\.</expression>
+                    </scope>
+                </subscopes>
             </scope>
         </collection>
         
