@@ -105,15 +105,11 @@
             </scope>
             
             <scope name="r.value.number">
-                <expression>(?&lt;![\w.])((0(x|X)[0-9a-fA-F]*)|(-?\d+L?)|(-?\d*\.?\d+((e|E)(\+|-)?\d+)?i?))(?![\d.eE])</expression>
+                <expression>(?&lt;![\w.])((0(x|X)[0-9a-fA-F]*)|(-?\d+L?)|(-?\d*\.?\d+((e|E)(\+|-)?\d+)?i?))(?![\d.eE])|\b(Inf|NaN|pi)\b</expression>
             </scope>
             
             <scope name="r.value.boolean">
-                <expression>\b(TRUE|FALSE|T|F)\b</expression>
-            </scope>
-            
-            <scope name="r.value.misc">
-                <expression>\b(NA|Inf|NaN|pi|letters|LETTERS|month\.abb|month\.name)\b</expression>
+                <expression>\b(TRUE|FALSE|T|F|NA)\b</expression>
             </scope>
         </collection>
         
