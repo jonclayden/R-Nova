@@ -1,3 +1,7 @@
+## Version 0.3.2
+
+- Highlighting has been improved for string escapes and constants.
+
 ## Version 0.3.1
 
 - The "Test Package" task could fail with an error about a missing script, due to a file permissions issue. A workaround has been added to resolve this.
