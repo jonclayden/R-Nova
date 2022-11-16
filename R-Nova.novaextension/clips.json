@@ -1,0 +1,32 @@
+{
+    "clips" : [
+        {
+            "content" : "library(${:package})",
+            "name" : "Load library",
+            "scope" : "editor",
+            "syntax" : "r",
+            "trigger" : "lib"
+        },
+        {
+            "content" : "require(${:package})",
+            "name" : "Require library",
+            "scope" : "editor",
+            "syntax" : "r",
+            "trigger" : "req"
+        },
+        {
+          "content" : "${0:function name} <- function (${1:arguments})$2",
+          "name" : "Define function",
+          "scope" : "editor",
+          "syntax" : "r",
+          "trigger" : "fun"
+        },
+        {
+          "content" : " <- ",
+          "name" : "Insert assignment operator",
+          "scope" : "editor",
+          "shortcut" : "ctrl--",
+          "syntax" : "r"
+        }
+    ]
+}
