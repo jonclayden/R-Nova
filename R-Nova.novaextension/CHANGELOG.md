@@ -1,3 +1,7 @@
+## Version 0.4
+
+- The extension now includes clips for some common code patterns, such as loading packages and defining functions.
+
 ## Version 0.3.2
 
 - Highlighting has been improved for string escapes and constants.
