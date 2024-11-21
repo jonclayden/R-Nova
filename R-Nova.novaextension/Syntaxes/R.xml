@@ -46,6 +46,10 @@
         <include syntax="self" collection="all" />
     </scopes>
     
+    <tree-sitter>
+        <highlights />
+    </tree-sitter>
+    
     <collections>
         <collection name="all">
             <include syntax="self" collection="comments" />
