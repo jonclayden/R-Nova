@@ -16,7 +16,7 @@
         <expression>(?&lt;![\w.])(\.[A-Za-z_]|[A-Za-z][\w.])[\w.]*</expression>
         <symbols type="function">
             <behavior>
-                <append>($[])</append>
+                <arguments prefix="(" suffix=")" separator=", " />
             </behavior>
         </symbols>
         <symbols type="variable" />
