@@ -24,16 +24,10 @@
     </provider>
     
     <set name="r.keywords" symbol="keyword">
-        <completion string="if" />
         <completion string="break" />
         <completion string="next" />
         <completion string="repeat" />
         <completion string="else" />
-        <completion string="for" />
-        <completion string="return" />
-        <completion string="while" />
-        <completion string="in" />
-        <completion string="function" />
     </set>
     
     <set name="r.base.constants" symbol="constant">

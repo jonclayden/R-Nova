@@ -15,11 +15,39 @@
             "trigger" : "req"
         },
         {
-          "content" : "${0:function name} <- function (${1:arguments})$2",
+          "content" : "function (${0:arguments})$1",
           "name" : "Define function",
           "scope" : "editor",
           "syntax" : "r",
           "trigger" : "fun"
+        },
+        {
+          "content" : "if (${0:condition})$1",
+          "name" : "If statement",
+          "scope" : "editor",
+          "syntax" : "r",
+          "trigger" : "if"
+        },
+        {
+          "content" : "while (${0:condition})$1",
+          "name" : "While statement",
+          "scope" : "editor",
+          "syntax" : "r",
+          "trigger" : "while"
+        },
+        {
+          "content" : "for (${0:variable} in ${1:sequence})$2",
+          "name" : "For statement",
+          "scope" : "editor",
+          "syntax" : "r",
+          "trigger" : "for"
+        },
+        {
+          "content" : "return (${0:value})$1",
+          "name" : "Return statement",
+          "scope" : "editor",
+          "syntax" : "r",
+          "trigger" : "ret"
         },
         {
           "content" : " <- ",
