@@ -9,4 +9,4 @@ R-Nova provides R support for Nova. The following features are currently include
 
 Further functionality is being added gradually for deeper integration. If you would like to support development of the extension, code contributions ([via GitHub](https://github.com/jonclayden/R-Nova)) and tips ([via PayPal](https://paypal.me/jonclayden)) are both welcome.
 
-The [R logo](https://www.r-project.org/logo/), used as the extension icon, is © 2016 The R Foundation. It is redistributed under the terms of the [Creative Commons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/) (CC-BY-SA 4.0).
+The [R logo](https://www.r-project.org/logo/), used as the extension icon, is © 2016 The R Foundation. It is redistributed under the terms of the [Creative Commons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/) (CC-BY-SA 4.0). The Tree-sitter grammar used internally is © 2024 the [tree-sitter-r authors](https://github.com/r-lib/tree-sitter-r), released under an MIT licence.
