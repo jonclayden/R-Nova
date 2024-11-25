@@ -48,6 +48,8 @@
     
     <tree-sitter>
         <highlights />
+        <symbols />
+        <folds />
     </tree-sitter>
     
     <collections>
