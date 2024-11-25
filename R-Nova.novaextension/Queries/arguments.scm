@@ -1,4 +1,4 @@
 (parameters
 	(parameter
-		name: (identifier) @name) @subtree
+		name: (identifier) @name)
 ) @subtree
