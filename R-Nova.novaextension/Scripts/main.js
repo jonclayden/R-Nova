@@ -7,22 +7,6 @@ exports.activate = function() {
     langserver = new RLanguageServer();
     taskassistant = new RTaskAssistant();
     nova.assistants.registerTaskAssistant(taskassistant);
-    
-    nova.commands.register("continueRoxygen", (editor) => {
-        var selectedRanges = editor.selectedRanges.reverse();
-        editor.edit(function(e) {
-            for (var range of selectedRanges) {
-                var lineRange = editor.getLineRangeForRange(range);
-                var text = editor.getTextInRange(lineRange);
-                const match = text.match(/^\s*#'[\t ]*/);
-                if (!match) {
-                    e.replace(range, "\n");
-                } else {
-                    e.replace(range, "\n" + match);
-                }
-            }
-        });
-    });
 }
 
 exports.deactivate = function() {

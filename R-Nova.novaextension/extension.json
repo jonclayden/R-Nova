@@ -4,12 +4,12 @@
     "organization": "Jon Clayden",
     "description": "Support for the R language and R Markdown, including language server integration.",
     "version": "0.4",
-    "min_runtime": "5",
+    "min_runtime": "2",
     "license": "BSD 3-clause",
     "repository": "https://github.com/jonclayden/R-Nova",
     "bugs": "https://github.com/jonclayden/R-Nova/issues",
     "funding": "https://paypal.me/jonclayden",
-    "categories": [ "languages", "completions", "commands", "tasks", "clips" ],
+    "categories": [ "languages", "completions", "tasks", "clips" ],
     
     "main": "main.js",
     "activationEvents": [ "onLanguage:r", "onWorkspaceContains:*.Rproj", "onWorkspaceContains:.Rbuildignore" ],
@@ -17,20 +17,6 @@
     "entitlements": {
         "process": true,
         "filesystem": "readonly"
-    },
-    
-    "commands": {
-        "text": [
-            {
-                "title": "Continue roxygen block",
-                "command": "continueRoxygen",
-                "shortcut": "return",
-                "when": "editorHasFocus",
-                "filters": {
-                    "syntaxes": ["r"]
-                }
-            }
-        ]
     },
     
     "issueMatchers": {
