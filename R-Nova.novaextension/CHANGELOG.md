@@ -1,3 +1,10 @@
+## Version 0.5
+
+- A Tree-sitter parser, based on the grammar from the [tree-sitter-r](https://github.com/r-lib/tree-sitter-r) project, is now included with the extension for faster and more versatile syntax handling.
+- The Tree-sitter parser additionally symbolicates classes defined with `setClass()` and `setRefClass`, from the `methods` package, and handles right-assignment (`->`) to variables.
+- `if`, `while`, `for` and `return` statements are now clips rather than simple completions. The function declaration clip no longer assumed the function will be assigned to a name, as it may be anonymous.
+- Symbolicated function arguments should now be shown within rather than after the parentheses, comma separated as expected.
+
 ## Version 0.4
 
 - The extension now includes clips for some common code patterns, such as loading packages and defining functions.
