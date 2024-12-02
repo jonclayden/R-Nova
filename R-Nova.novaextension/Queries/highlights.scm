@@ -47,6 +47,11 @@
     operator: "="
 )
 
+(binary_operator
+    operator: "->"
+    rhs: (identifier) @identifier.variable
+)
+
 ; Functions
 
 (binary_operator
@@ -59,6 +64,22 @@
     lhs: (identifier) @identifier.function
     operator: "="
     rhs: (function_definition) @definition.function
+)
+
+; Classes
+
+(binary_operator
+    lhs: (identifier) @identifier.type.class
+    operator: "<-"
+    rhs: (_) @value
+    (#match? @value "^\\s*(setClass|setRefClass)\\s*\\(")
+)
+
+(binary_operator
+    lhs: (identifier) @identifier.type.class
+    operator: "="
+    rhs: (_) @value
+    (#match? @value "^\\s*(setClass|setRefClass)\\s*\\(")
 )
 
 ; Calls
